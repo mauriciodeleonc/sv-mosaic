@@ -11,15 +11,16 @@ import { TextFieldDef } from "@root/forms/FormFieldText";
 import { IAddress } from "@root/forms/FormFieldAddress";
 import { AddressDrawerProps } from "../AddressTypes";
 import _ from "lodash";
+import LocationSearchInput from "@root/forms/FormFieldMapCoordinates/LocationSearchInput";
 
 // Layout of the form elements.
 const sections = [
 	{
 		fields: [
-			[["country"]],
 			[["address1"]],
 			[["address2"]],
 			[["address3"]],
+			[["country"]],
 			[["city"], ["states"], ["postalCode"]],
 			[["type"]],
 		],
@@ -249,6 +250,8 @@ const AddressDrawer = (props: AddressDrawerProps): ReactElement => {
 		handleClose(true);
 	};
 
+
+
 	const fields = useMemo(
 		() =>
 			[
@@ -264,11 +267,18 @@ const AddressDrawer = (props: AddressDrawerProps): ReactElement => {
 				},
 				{
 					name: "address1",
-					type: "text",
+					type: LocationSearchInput,
 					label: "Address",
 					size: "lg",
 					required: true,
-				} as FieldDef<TextFieldDef>,
+				},
+				// {
+				// 	name: "address1",
+				// 	type: "text",
+				// 	label: "Address",
+				// 	size: "lg",
+				// 	required: true,
+				// } as FieldDef<TextFieldDef>,
 				{
 					name: "address2",
 					type: "text",

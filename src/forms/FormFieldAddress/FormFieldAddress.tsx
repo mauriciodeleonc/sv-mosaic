@@ -13,6 +13,7 @@ import { AddAddressWrapper, FlexContainer } from "./Address.styled";
 import AddressCard from "./AddressCard";
 import { MosaicFieldProps } from "@root/components/Field";
 import { IAddress, AddressFieldDef } from ".";
+import { useLoadScript } from "@react-google-maps/api";
 
 const FormFieldAddress = (props: MosaicFieldProps<AddressFieldDef, IAddress[]>): ReactElement => {
 	const {
@@ -182,6 +183,14 @@ const FormFieldAddress = (props: MosaicFieldProps<AddressFieldDef, IAddress[]>):
 		setIsEditing(true);
 		setOpen(true);
 	};
+
+	const { isLoaded, loadError } = useLoadScript({
+		googleMapsApiKey: "AIzaSyArV4f-KFF86Zn9VWAu9wS4hHlG1TXxqac",
+		libraries: ["places"],
+	});
+
+	if (loadError) return <span>{"Error loading maps"}</span>;
+	if (!isLoaded) return <span>{"Loading Maps"}</span>;
 
 	return (
 		<div>
