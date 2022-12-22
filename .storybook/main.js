@@ -8,6 +8,7 @@ module.exports = {
 	],
 	addons: [
 		"@storybook/addon-knobs/register",
+		'@storybook/addon-storysource',
 		//'@storybook/addon-viewport',
 		{
 			name: "@storybook/addon-docs",
