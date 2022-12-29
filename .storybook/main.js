@@ -15,7 +15,9 @@ module.exports = {
 			options: {
 				configureJSX: true,
 				babelOptions: {},
-				sourceLoaderOptions: null,
+				sourceLoaderOptions: {
+					injectStoryParameters: false,
+				},
 			}
 		}
 	],
