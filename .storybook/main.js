@@ -10,6 +10,7 @@ module.exports = {
 		"@storybook/addon-knobs/register",
 		"@storybook/addon-viewport",
 		"@storybook/addon-storysource",
+		"storybook-addon-react-docgen",
 		{
 			name: "@storybook/addon-docs",
 			options: {

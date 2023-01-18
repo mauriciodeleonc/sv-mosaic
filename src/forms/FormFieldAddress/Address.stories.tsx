@@ -5,10 +5,16 @@ import { onCancel, renderButtons } from "@root/utils/storyUtils";
 import { FieldDef } from "../../components/Field";
 import Form, { useForm } from "@root/components/Form";
 import { getOptionsCountries, getOptionsStates } from "./utils/optionGetters";
+import FormFieldAddress from "./FormFieldAddress";
 
 export default {
 	title: "FormFields/FormFieldAddress",
 	decorators: [withKnobs],
+	parameters: {
+		props: {
+			propTables: [FormFieldAddress]
+		}
+	}
 };
 
 export const Playground = (): ReactElement => {
