@@ -24,7 +24,7 @@ const Field = ({
 
 	const errorWithMessage = typeof error === "string" ?  error?.trim().length > 0 : false;
 
-	const shouldRenderError = (errorWithMessage || (errorWithMessage && fieldDef?.required) || (typeof error === "boolean" && error === true));
+	const shouldRenderError = (errorWithMessage || (errorWithMessage && fieldDef.required) || (typeof error === "boolean" && error === true));
 
 	const handleDescriptionRender = () => {
 		const container = fieldContainer.current;
@@ -56,9 +56,9 @@ const Field = ({
 	const handleDescriptionDebounced = debounce(handleDescriptionRender, 300);
 
 	useEffect(() => {
-		if (fieldDef?.instructionText)
+		if (fieldDef.instructionText)
 			if (colsInRow === 1) {
-				if (fieldDef?.type === "imageUpload" || fieldDef?.type === "table") {
+				if (fieldDef.type === "imageUpload" || fieldDef.type === "table") {
 					setRenderAsTooltip(true);
 				} else {
 					handleDescriptionDebounced();
@@ -81,42 +81,42 @@ const Field = ({
 					typeof error === "string" ? error : undefined
 				}
 			</HelperText>;
-		} else if (fieldDef?.helperText) {
-			return <HelperText>{fieldDef?.helperText}</HelperText>;
+		} else if (fieldDef.helperText) {
+			return <HelperText>{fieldDef.helperText}</HelperText>;
 		}
 	};
 
 	return (
-		<StyledFieldContainer id={id} className={fieldDef?.className} style={fieldDef?.style} data-testid="field-test-id">
+		<StyledFieldContainer id={id} className={fieldDef.className} style={fieldDef.style} data-testid="field-test-id" data-testid-type={fieldDef.type}>
 			<StyledFieldWrapper
 				error={shouldRenderError}
 				ref={fieldRef}
 			>
 				{
-					((fieldDef?.label && fieldDef?.label?.length > 0)
-						|| fieldDef?.inputSettings?.maxCharacters
-						|| (fieldDef?.instructionText && renderAsTooltip))
+					((fieldDef.label && fieldDef.label?.length > 0)
+						|| fieldDef.inputSettings?.maxCharacters
+						|| (fieldDef.instructionText && renderAsTooltip))
 					&&
 					<Label
-						required={fieldDef?.required}
-						htmlFor={fieldDef?.name}
-						maxCharacters={fieldDef?.inputSettings?.maxCharacters}
+						required={fieldDef.required}
+						htmlFor={fieldDef.name}
+						maxCharacters={fieldDef.inputSettings?.maxCharacters}
 						value={value}
 						tooltip={renderAsTooltip}
-						instructionText={fieldDef?.instructionText}
+						instructionText={fieldDef.instructionText}
 					>
-						{fieldDef?.label}
+						{fieldDef.label}
 					</Label>
 				}
 				{children}
 				{renderBottomText()}
 			</StyledFieldWrapper>
-			{(fieldDef?.instructionText && colsInRow === 1 && !renderAsTooltip) &&
+			{(fieldDef.instructionText && colsInRow === 1 && !renderAsTooltip) &&
 				<InstructionText
 					ref={description}
 					tooltip={renderAsTooltip}
 				>
-					{fieldDef?.instructionText}
+					{fieldDef.instructionText}
 				</InstructionText>
 			}
 		</StyledFieldContainer>
